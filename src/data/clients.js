@@ -1,8 +1,6 @@
-import client1 from "../assets/images/clients/client1.png";
-import client2 from "../assets/images/clients/client2.png";
-import client3 from "../assets/images/clients/client3.png";
-import client4 from "../assets/images/clients/client4.png";
-import client5 from "../assets/images/clients/client5.png";
+import client1 from "../assets/images/clients/cliente1.jpg";
+import client2 from "../assets/images/clients/cliente2.jpg";
+import client3 from "../assets/images/clients/cliente3.jpg";
 
 export const clients = [
   {
@@ -19,15 +17,5 @@ export const clients = [
     id: 3,
     name: "Cliente 3",
     logo: client3,
-  },
-  {
-    id: 4,
-    name: "Cliente 4",
-    logo: client4,
-  },
-  {
-    id: 5,
-    name: "Cliente 5",
-    logo: client5,
   },
 ];

@@ -1,27 +1,19 @@
-import Projects from "./sections/Projects";
-import Navbar from "./components/Navbar";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Services from "./sections/Services";
-import Features from "./sections/Features";
-import Footer from "./sections/Footer";
-import Clients from "./sections/Clients";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import JoinTeamPage from "./pages/JoinTeamPage";
+import Home from "./pages/Home";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Features />
-      <Services />
-      <Projects />
-      <Clients />
-      <Footer />
-      
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contacto" element={<ContactPage />} />
+        <Route path="/trabaja-con-nosotros" element={<JoinTeamPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
 
 export default App;
