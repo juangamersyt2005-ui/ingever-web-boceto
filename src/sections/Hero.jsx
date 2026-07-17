@@ -28,7 +28,7 @@ function Hero() {
             Ingeniería Industrial
           </p>
 
-          <h1 className="text-white text-6xl lg:text-8xl font-extrabold leading-tight">
+          <h1 className="text-7xl font-extrabold text-white animate-[fadeIn_1s_ease]">
             Especialistas en
             <span className="block text-yellow-400">
               Puentes Grúa

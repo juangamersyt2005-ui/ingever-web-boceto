@@ -5,7 +5,10 @@ import { services } from "../data/services";
 
 function Services() {
     return (
-        <section id="servicios" className="py-28 bg-gray-50">
+        <section
+            id="servicios"
+            className="relative overflow-hidden py-28 bg-gray-50"
+        >
             <Container>
                 <SectionTitle
                     subtitle="Servicios"
@@ -29,6 +32,9 @@ function Services() {
                     ))}
                 </div>
             </Container>
+            <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#F5C518]/10 blur-3xl"></div>
+
+            <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-[#F5C518]/10 blur-3xl"></div>
         </section>
     );
 }
