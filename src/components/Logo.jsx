@@ -5,7 +5,7 @@ function Logo() {
     <img
       src={logo}
       alt="Ingever Asociados"
-      className="h-14"
+      className="h-18"
     />
   );
 }

@@ -16,22 +16,20 @@ function Hero() {
 
       {/* Overlay oscuro */}
 
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40"></div>
 
       {/* Contenido */}
 
-      <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-8">
+      <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-20">
 
-        <div className="max-w-3xl">
+        <div className="max-w-2xl">
 
           <p className="uppercase tracking-[8px] text-yellow-400 font-semibold mb-6">
             Ingeniería Industrial
           </p>
 
           <h1 className="text-white text-6xl lg:text-8xl font-extrabold leading-tight">
-
             Especialistas en
-
             <span className="block text-yellow-400">
               Puentes Grúa
             </span>

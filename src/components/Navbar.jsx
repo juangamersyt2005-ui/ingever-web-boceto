@@ -22,12 +22,12 @@ function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-5">
+      <nav className="max-w-[1600px] mx-auto flex items-center justify-between px-8 py-5">
 
         <Logo />
 
         <ul
-          className={`flex items-center gap-8 font-medium transition-colors duration-300 ${
+          className={`flex items-center gap-12 font-medium transition-colors duration-300 ${
             scrolled ? "text-black" : "text-white"
           }`}
         >
