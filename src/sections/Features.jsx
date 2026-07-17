@@ -5,7 +5,7 @@ import { features } from "../data/features";
 
 function Features() {
   return (
-    <section className="py-24 bg-[#F8F9FA]">
+    <section id="fortalezas" className="py-24 bg-[#F8F9FA]">
       <Container>
         <SectionTitle
           subtitle="¿Por qué elegirnos?"

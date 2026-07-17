@@ -4,6 +4,7 @@ import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Services from "./sections/Services";
 import Features from "./sections/Features";
+import Footer from "./sections/Footer";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Features />
       <Services />
       <Projects />
+      <Footer />
     </>
   );
 }
