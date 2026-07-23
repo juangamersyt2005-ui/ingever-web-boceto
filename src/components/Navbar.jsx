@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { navigation } from "../data/navigation";
+import Button from "./ui/Button";
 import Logo from "./Logo";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showQuoteCta, setShowQuoteCta] = useState(false);
   const solidHeader = scrolled || menuOpen;
 
   useEffect(() => {
@@ -15,6 +17,23 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const heroQuoteCta = document.getElementById("hero-quote-cta");
+
+    if (!heroQuoteCta || !("IntersectionObserver" in window)) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowQuoteCta(!entry.isIntersecting),
+      { threshold: 0.15 },
+    );
+
+    observer.observe(heroQuoteCta);
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -50,37 +69,61 @@ function Navbar() {
           />
         </a>
 
-        <ul
-          className={`hidden items-center gap-7 text-sm font-semibold xl:gap-9 lg:flex ${
-            solidHeader ? "text-[#1A1A1A]" : "text-white"
-          }`}
-        >
-          {navigation.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="transition-colors hover:text-[#D6A900] focus-visible:text-[#D6A900] focus-visible:outline-none"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
+          <ul
+            className={`flex items-center gap-7 text-sm font-semibold xl:gap-9 ${
+              solidHeader ? "text-[#1A1A1A]" : "text-white"
+            }`}
+          >
+            {navigation.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="transition-colors hover:text-[#D6A900] focus-visible:text-[#D6A900] focus-visible:outline-none"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <button
-          type="button"
-          className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F5C518]/35 lg:hidden ${
-            solidHeader
-              ? "text-[#1A1A1A] hover:bg-black/5"
-              : "text-white hover:bg-white/10"
-          }`}
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-          aria-controls="menu-principal"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          {menuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-lg" />}
-        </button>
+          {showQuoteCta && (
+            <Button
+              to="/contacto"
+              size="sm"
+              className="animate-[navCtaIn_0.4s_ease-out_backwards] motion-reduce:animate-none"
+            >
+              Solicitar cotización
+            </Button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 lg:hidden">
+          {showQuoteCta && (
+            <Button
+              to="/contacto"
+              size="sm"
+              className="animate-[navCtaIn_0.4s_ease-out_backwards] motion-reduce:animate-none"
+            >
+              Cotizar
+            </Button>
+          )}
+
+          <button
+            type="button"
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F5C518]/35 ${
+              solidHeader
+                ? "text-[#1A1A1A] hover:bg-black/5"
+                : "text-white hover:bg-white/10"
+            }`}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-controls="menu-principal"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-lg" />}
+          </button>
+        </div>
 
         {menuOpen && (
           <div

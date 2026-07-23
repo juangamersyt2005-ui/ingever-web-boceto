@@ -33,7 +33,12 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex animate-[fadeUp_0.75s_ease-out_0.5s_both] flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
-            <Button to="/contacto" size="lg" className="w-full sm:w-auto">
+            <Button
+              id="hero-quote-cta"
+              to="/contacto"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
               Solicitar cotización
             </Button>
             <Button href="#conocenos" variant="light" size="lg" className="w-full sm:w-auto">
