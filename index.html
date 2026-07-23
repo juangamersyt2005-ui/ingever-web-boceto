@@ -11,6 +11,46 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Netlify detecta estos formularios durante el build de la SPA. -->
+    <form
+      name="cotizacion"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="cotizacion" />
+      <input name="bot-field" type="text" />
+      <input name="nombre" type="text" />
+      <input name="empresa" type="text" />
+      <input name="correo" type="email" />
+      <input name="telefono" type="tel" />
+      <select name="servicio"><option value=""></option></select>
+      <textarea name="descripcion"></textarea>
+      <input name="archivo" type="file" />
+    </form>
+
+    <form
+      name="postulacion-laboral"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="postulacion-laboral" />
+      <input name="bot-field" type="text" />
+      <input name="nombre" type="text" />
+      <input name="cargo" type="text" />
+      <input name="correo" type="email" />
+      <input name="telefono" type="tel" />
+      <select name="area"><option value=""></option></select>
+      <textarea name="presentacion"></textarea>
+      <input name="hoja-de-vida" type="file" />
+    </form>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

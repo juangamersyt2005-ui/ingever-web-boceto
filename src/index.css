@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap");
+@import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
@@ -21,6 +20,7 @@ h5,
 h6 {
   font-family: "Montserrat", sans-serif;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -31,7 +31,4 @@ h6 {
     opacity: 1;
     transform: translateY(0);
   }
-  html {
-  scroll-behavior: smooth;
-}
 }
