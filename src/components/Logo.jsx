@@ -5,7 +5,7 @@ function Logo() {
     <img
       src={logo}
       alt="Ingever Asociados"
-      className="h-18 transition-transform duration-500 hover:scale-105"
+      className="h-11 w-auto transition-transform duration-300 hover:scale-[1.03] sm:h-12 lg:h-14"
     />
   );
 }

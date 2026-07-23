@@ -1,60 +1,100 @@
 import { useEffect, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { navigation } from "../data/navigation";
+import Button from "./ui/Button";
 import Logo from "./Logo";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const solidHeader = scrolled || menuOpen;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 24);
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Nosotros", href: "#nosotros" },
-    { label: "Servicios", href: "#servicios" },
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Contacto", href: "#contacto" },
-  ];
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    
-
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${scrolled
-        ? "bg-white/90 backdrop-blur-md shadow-xl py-1"
-        : "bg-transparent py-3"
-        }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        solidHeader
+          ? "bg-white/95 py-2 shadow-lg shadow-black/10 backdrop-blur-md"
+          : "bg-transparent py-3"
+      }`}
     >
-      <nav className="max-w-[1600px] mx-auto flex items-center justify-between px-8 transition-all duration-500">
+      <nav className="relative mx-auto flex max-w-[1400px] items-center justify-between px-5 sm:px-6 lg:px-8 xl:px-10">
+        <a href="#inicio" aria-label="Ir al inicio" onClick={closeMenu}>
+          <Logo />
+        </a>
 
-        <Logo />
-
-        <ul
-          className={`flex items-center gap-12 font-medium transition-colors duration-300 ${scrolled ? "text-black" : "text-white"
+        <div className="hidden items-center gap-8 lg:flex">
+          <ul
+            className={`flex items-center gap-7 text-sm font-semibold xl:gap-9 ${
+              solidHeader ? "text-[#1A1A1A]" : "text-white"
             }`}
-        >
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="transition-colors duration-300 hover:text-[#F5C518]"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          >
+            {navigation.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="transition-colors hover:text-[#D6A900] focus-visible:text-[#D6A900] focus-visible:outline-none"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <button className="bg-yellow-400 text-black font-semibold px-7 py-3 rounded-lg hover:bg-yellow-300 hover:scale-105 active:scale-95 transition-all duration-300">
-          Solicitar cotización
+          <Button to="/contacto" size="sm">
+            Solicitar cotización
+          </Button>
+        </div>
+
+        <button
+          type="button"
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F5C518]/35 lg:hidden ${
+            solidHeader
+              ? "text-[#1A1A1A] hover:bg-black/5"
+              : "text-white hover:bg-white/10"
+          }`}
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-controls="menu-principal"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-lg" />}
         </button>
 
+        {menuOpen && (
+          <div
+            id="menu-principal"
+            className="absolute left-5 right-5 top-full mt-2 rounded-2xl border border-black/10 bg-white p-4 shadow-2xl shadow-black/15 lg:hidden"
+          >
+            <ul className="space-y-1">
+              {navigation.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={closeMenu}
+                    className="block rounded-xl px-4 py-3 font-semibold text-[#1A1A1A] transition-colors hover:bg-[#F5C518]/15"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <Button to="/contacto" className="mt-3 w-full" onClick={closeMenu}>
+              Solicitar cotización
+            </Button>
+          </div>
+        )}
       </nav>
     </header>
   );
