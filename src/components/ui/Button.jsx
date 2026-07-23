@@ -26,8 +26,12 @@ function Button({
   type = "button",
   className = "",
   disabled = false,
+  loading = false,
+  loadingLabel = "Cargando...",
   ...props
 }) {
+  const isDisabled = disabled || loading;
+  const content = loading ? loadingLabel : children;
   const classes = [
     "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#F5C518]/35 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-60",
     variants[variant] ?? variants.primary,
@@ -37,23 +41,29 @@ function Button({
 
   if (to) {
     return (
-      <Link to={to} className={classes} {...props}>
-        {children}
+      <Link to={to} className={classes} aria-busy={loading || undefined} {...props}>
+        {content}
       </Link>
     );
   }
 
   if (href) {
     return (
-      <a href={href} className={classes} {...props}>
-        {children}
+      <a href={href} className={classes} aria-busy={loading || undefined} {...props}>
+        {content}
       </a>
     );
   }
 
   return (
-    <button type={type} className={classes} disabled={disabled} {...props}>
-      {children}
+    <button
+      type={type}
+      className={classes}
+      disabled={isDisabled}
+      aria-busy={loading || undefined}
+      {...props}
+    >
+      {content}
     </button>
   );
 }

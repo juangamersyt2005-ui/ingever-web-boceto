@@ -1,30 +1,22 @@
+import ProjectCard from "../components/cards/ProjectCard";
 import Container from "../components/ui/Container";
 import SectionTitle from "../components/ui/SectionTitle";
-import ProjectCard from "../components/cards/ProjectCard";
 import { projects } from "../data/projects";
 
 function Projects() {
   return (
-    <section id="proyectos" className="py-20 bg-white">
+    <section id="proyectos" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container>
-        <SectionTitle
-          subtitle="Proyectos"
-          title="Algunos de nuestros trabajos"
-        />
+        <SectionTitle subtitle="Proyectos" title="Algunos de nuestros trabajos" />
 
-        <p className="mt-6 max-w-3xl mx-auto text-center text-gray-600">
-          Estos son algunos de los proyectos que reflejan nuestra experienDXcia en
+        <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-7 text-gray-600 sm:mt-6 sm:text-lg sm:leading-8">
+          Estos son algunos de los proyectos que reflejan nuestra experiencia en
           montaje, mantenimiento y modernización de puentes grúa.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:grid-cols-3 lg:gap-8">
           {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              image={project.image}
-              title={project.title}
-              location={project.location}
-            />
+            <ProjectCard key={project.id} {...project} />
           ))}
         </div>
       </Container>
