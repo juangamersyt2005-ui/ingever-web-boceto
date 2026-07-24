@@ -58,8 +58,8 @@ function Navbar() {
           : "bg-transparent py-3 sm:py-4"
       }`}
     >
-      <nav className="relative mx-auto flex max-w-[1400px] items-center justify-between px-5 sm:px-6 lg:px-8 xl:px-10">
-        <a href="#inicio" aria-label="Ir al inicio" onClick={closeMenu}>
+      <nav className="relative mx-auto flex max-w-350 items-center justify-between px-5 sm:px-6 lg:px-8 xl:px-10">
+        <a href="/#inicio" aria-label="Ir al inicio" onClick={closeMenu}>
           <Logo
             className={
               solidHeader
@@ -69,7 +69,7 @@ function Navbar() {
           />
         </a>
 
-        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
+        <div className="hidden items-center gap-6 xl:flex">
           <ul
             className={`flex items-center gap-7 text-sm font-semibold xl:gap-9 ${
               solidHeader ? "text-[#1A1A1A]" : "text-white"
@@ -98,7 +98,7 @@ function Navbar() {
           )}
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           {showQuoteCta && (
             <Button
               to="/contacto"
@@ -128,7 +128,7 @@ function Navbar() {
         {menuOpen && (
           <div
             id="menu-principal"
-            className="absolute left-5 right-5 top-full mt-2 rounded-2xl border border-black/10 bg-white p-4 shadow-2xl shadow-black/15 lg:hidden"
+            className="absolute left-5 right-5 top-full mt-2 rounded-2xl border border-black/10 bg-white p-4 shadow-2xl shadow-black/15 xl:hidden"
           >
             <ul className="space-y-1">
               {navigation.map((link) => (

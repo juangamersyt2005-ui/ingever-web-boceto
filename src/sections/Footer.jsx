@@ -9,7 +9,7 @@ function Footer() {
       <Container>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_0.8fr] lg:gap-12">
           <div>
-            <a href="#inicio" aria-label="Ir al inicio">
+            <a href="/#inicio" aria-label="Ir al inicio">
               <Logo className="h-12 sm:h-14" />
             </a>
             <p className="mt-5 max-w-xs text-sm leading-6 text-gray-400 sm:mt-6 sm:text-base sm:leading-7">

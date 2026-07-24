@@ -3,6 +3,7 @@ import Hero from "../sections/Hero";
 import About from "../sections/About";
 import Features from "../sections/Features";
 import Services from "../sections/Services";
+import Products from "../sections/Products";
 import Projects from "../sections/Projects";
 import Clients from "../sections/Clients";
 import Contact from "../sections/Contact";
@@ -17,6 +18,7 @@ function Home() {
       <About />
       <Features />
       <Services />
+      <Products />
       <Projects />
       <Clients />
       <Contact />

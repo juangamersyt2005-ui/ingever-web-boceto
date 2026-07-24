@@ -54,6 +54,28 @@ h6 {
   }
 }
 
+@keyframes carouselEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(32px, 8px, 0) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes carouselProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
